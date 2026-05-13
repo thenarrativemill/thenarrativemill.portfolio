@@ -1,0 +1,407 @@
+/* ─── Local Fonts ────────────────────────────────── */
+@font-face {
+  font-family: 'Killam';
+  src: url('fonts/Killam-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tess';
+  src: url('fonts/Tess.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tess';
+  src: url('fonts/Tess-Demi.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tess';
+  src: url('fonts/Tess-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Tess-Rounded';
+  src: url('fonts/Tess-Rounded.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ─── CSS Variables ──────────────────────────────── */
+:root {
+  --ink:        #1A1A1D;
+  --cream:      #E8E1D6;
+  --gold:       #A88C5A;
+  --muted:      #3A3A3F;
+  --slate:      #5C6F7A;
+  --rust:       #7A4A4A;
+
+  --nav-h:      68px;
+  --font-display: 'Killam', serif;
+  --font-body:    'Tess', sans-serif;
+  --font-rounded: 'Tess-Rounded', sans-serif;
+}
+
+/* ─── Reset ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── Navigation ─────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: var(--cream);
+  border-bottom: 1px solid rgba(26,26,29,.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: var(--ink);
+}
+.nav-brand span {
+  color: var(--gold);
+  font-style: italic;
+  font-family: var(--font-body);
+}
+
+nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+nav a {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+  transition: color .25s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width .3s ease;
+}
+nav a:hover { color: var(--ink); }
+nav a:hover::after { width: 100%; }
+nav a.active { color: var(--ink); }
+nav a.active::after { width: 100%; }
+
+/* ─── Section Label ──────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ─── Project 1 — Full-width stacked ────────────── */
+#project-1 {
+  display: grid;
+  grid-template-rows: 520px auto;
+}
+
+.p1-visual {
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p1-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(168,140,90,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.project-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(232,225,214,.18);
+  pointer-events: none;
+  user-select: none;
+}
+.project-placeholder .ph-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  letter-spacing: .06em;
+  color: rgba(232,225,214,.22);
+}
+.project-placeholder .ph-label {
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+/* hover lift on project visuals */
+.project-visual-wrap {
+  overflow: hidden;
+}
+.project-visual-wrap img,
+.project-visual-inner {
+  transition: transform .55s ease;
+}
+.project-visual-wrap:hover .project-visual-inner {
+  transform: scale(1.03);
+}
+
+.p1-info {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 56px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.p1-info .info-headline {
+  grid-column: 1 / 2;
+}
+.p1-info .info-body {
+  grid-column: 2 / 4;
+}
+
+.info-headline h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: .02em;
+  color: var(--cream);
+  margin-top: 12px;
+}
+.info-headline .project-num {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.info-body p {
+  font-size: .92rem;
+  line-height: 1.85;
+  color: rgba(232,225,214,.7);
+  max-width: 560px;
+}
+.info-body .view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: gap .25s;
+}
+.info-body .view-link::after {
+  content: '→';
+  font-size: 1rem;
+  transition: transform .25s;
+}
+.info-body .view-link:hover { gap: 16px; }
+.info-body .view-link:hover::after { transform: translateX(4px); }
+
+/* ─── Projects 2 & 3 — Split 50/50 ──────────────── */
+.project-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+}
+
+/* Project 2: image left, info right */
+.p2-visual {
+  background: var(--muted);
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+}
+.p2-visual .project-visual-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p2-info {
+  background: #fff;
+  border: 1px solid rgba(26,26,29,.1);
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Project 3: info left, image right */
+.p3-info {
+  background: #fff;
+  border: 1px solid rgba(26,26,29,.1);
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  order: 1;
+}
+.p3-visual {
+  background: var(--muted);
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+  order: 2;
+}
+.p3-visual .project-visual-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* shared split-panel info styles */
+.split-info h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: .02em;
+  color: var(--ink);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.split-info p {
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 400px;
+}
+.split-info .project-num {
+  font-size: .66rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+.split-info .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.tag {
+  font-family: var(--font-rounded);
+  font-size: .65rem;
+  font-weight: normal;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid;
+}
+.tag-slate  { border-color: var(--slate);  color: var(--slate); }
+.tag-rust   { border-color: var(--rust);   color: var(--rust);  }
+.tag-gold   { border-color: var(--gold);   color: var(--gold);  }
+.tag-ink    { border-color: var(--muted);  color: var(--muted); }
+
+.split-info .view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: gap .25s;
+}
+.split-info .view-link::after {
+  content: '→';
+  font-size: 1rem;
+  transition: transform .25s;
+}
+.split-info .view-link:hover { gap: 16px; }
+.split-info .view-link:hover::after { transform: translateX(4px); }
+
+/* Hover scale for split visuals */
+.p2-visual:hover .project-visual-inner,
+.p3-visual:hover .project-visual-inner {
+  transform: scale(1.03);
+}
+.p2-visual .project-visual-inner,
+.p3-visual .project-visual-inner {
+  transition: transform .55s ease;
+}
+
+/* ─── Decorative divider ─────────────────────────── */
+.gold-rule {
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  width: 60px;
+  margin: 16px 0 24px;
+}
+.gold-rule-right {
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 100%);
+  width: 60px;
+  margin: 16px 0 24px;
+  align-self: flex-start;
+}
+
+/* ─── Page-load fade ─────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.p1-visual       { animation: fadeUp .7s ease both; }
+.p1-info         { animation: fadeUp .7s .15s ease both; }
+.project-split   { animation: fadeUp .7s .25s ease both; }

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – The Narrative Mill</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <style>
+	  
+	body {
+  background: var(--ink);
+}
+
+    /* ─── Page Shell ─────────────────────────────────── */
+    .contact-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px 120px;
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .contact-hero {
+      margin-bottom: 72px;
+      border-bottom: 1px solid rgba(232,225,214,.1);
+      padding-bottom: 56px;
+    }
+    .contact-hero .eyebrow {
+      font-family: var(--font-body);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .contact-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: bold;
+      line-height: 1;
+      letter-spacing: .02em;
+      color: var(--cream);
+    }
+    .contact-hero p {
+      margin-top: 20px;
+      font-size: .95rem;
+      line-height: 1.85;
+      color: rgba(232,225,214,.6);
+      max-width: 480px;
+    }
+
+    /* ─── Section Labels ─────────────────────────────── */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* ─── Social Links ───────────────────────────────── */
+    .social-section {
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(232,225,214,.1);
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(232,225,214,.08);
+      color: rgba(232,225,214,.7);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      letter-spacing: .03em;
+      transition: color .25s, gap .25s;
+    }
+    .social-link:first-child {
+      border-top: 1px solid rgba(232,225,214,.08);
+    }
+    .social-link:hover {
+      color: var(--cream);
+      gap: 20px;
+    }
+    .social-link:hover .social-icon {
+      border-color: var(--gold);
+      background: rgba(168,140,90,.08);
+    }
+    .social-link:hover .social-arrow {
+      color: var(--gold);
+    }
+
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(232,225,214,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color .25s, background .25s;
+    }
+    .social-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .social-name {
+      flex: 1;
+      font-weight: 600;
+      color: var(--cream);
+    }
+    .social-handle {
+      font-size: .78rem;
+      color: rgba(232,225,214,.35);
+      font-family: var(--font-rounded);
+    }
+    .social-arrow {
+      font-size: .9rem;
+      color: rgba(232,225,214,.2);
+      transition: color .25s;
+    }
+
+    /* ─── Resume ─────────────────────────────────────── */
+    .resume-section {
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(232,225,214,.1);
+    }
+
+    .resume-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 32px;
+      background: rgba(232,225,214,.08);
+      border: 1px solid rgba(168,140,90,.4);
+      color: var(--cream);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: background .25s, border-color .25s, gap .25s;
+    }
+    .resume-download:hover {
+      background: rgba(168,140,90,.12);
+      border-color: var(--gold);
+      gap: 20px;
+    }
+    .resume-download svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ─── Contact Form ───────────────────────────────── */
+    .form-header {
+      margin-bottom: 36px;
+    }
+    .form-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: bold;
+      line-height: 1.1;
+      letter-spacing: .02em;
+      color: var(--cream);
+      margin-top: 10px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .field label {
+      font-family: var(--font-body);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(232,225,214,.6);
+    }
+    .field input,
+    .field textarea {
+      font-family: var(--font-body);
+      font-size: .88rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid rgba(26,26,29,.15);
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color .25s;
+      width: 100%;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(26,26,29,.25);
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 160px;
+      line-height: 1.7;
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      padding: 15px 32px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s, gap .25s;
+      align-self: flex-start;
+    }
+    .form-submit::after {
+      content: '→';
+      font-size: 1rem;
+      transition: transform .25s;
+    }
+    .form-submit:hover {
+      background: var(--muted);
+      gap: 18px;
+    }
+    .form-submit:hover::after {
+      transform: translateX(4px);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────── -->
+  <header>
+    <div class="nav-brand">The Narrative Mill &mdash; <span>Narrative Designer</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contact-page">
+
+      <!-- ── Hero ───────────────────────────────────── -->
+      <div class="contact-hero">
+        <div class="eyebrow">Get in touch</div>
+        <h1>Let's Connect</h1>
+        <p>Feel free to reach out for collaborations, commissions, or just to say hello.</p>
+      </div>
+
+      <!-- ── Social Links ────────────────────────────── -->
+      <div class="social-section">
+        <div class="section-label">Find me online</div>
+        <div class="social-links">
+
+          <a href="https://x.com/NarrativeMill" target="_blank" class="social-link">
+            <div class="social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.258 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </div>
+            <span class="social-name">Twitter / X</span>
+            <span class="social-handle">@NarrativeMill</span>
+            <span class="social-arrow">→</span>
+          </a>
+
+          <a href="https://bsky.app/profile/thenarrativemill.bsky.social" target="_blank" class="social-link">
+            <div class="social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.505 6.5.898 6.07 6.456 7.51 11.495 6.986-.047.011-.095.021-.142.034-5.04.523-10.598-.916-11.496-6.986C.235 9.418-.143 4.458-.143 3.768c0-.69.139-1.86.902-2.203.659-.299 1.664-.621 4.3 1.24C7.954 4.747 10.913 8.686 12 10.8zm0 0c1.087-2.114 4.046-6.053 6.798-7.995 2.636-1.861 3.641-1.539 4.3-1.24.763.343.902 1.513.902 2.203 0 .69-.378 5.65-.505 6.5-.898 6.07-6.456 7.51-11.495 6.986.047.011.095.021.142.034 5.04.523 10.598-.916 11.496-6.986.127-.85.505-5.81.505-6.5 0-.69-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/>
+              </svg>
+            </div>
+            <span class="social-name">Bluesky</span>
+            <span class="social-handle">@thenarrativemill.bsky.social</span>
+            <span class="social-arrow">→</span>
+          </a>
+
+          <a href="https://www.youtube.com/@thenarrativemill" target="_blank" class="social-link">
+            <div class="social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <span class="social-name">YouTube</span>
+            <span class="social-handle">@thenarrativemill</span>
+            <span class="social-arrow">→</span>
+          </a>
+
+          <a href="https://www.instagram.com/thenarrativemill/" target="_blank" class="social-link">
+            <div class="social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+              </svg>
+            </div>
+            <span class="social-name">Instagram</span>
+            <span class="social-handle">@thenarrativemill</span>
+            <span class="social-arrow">→</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/samantha-miller-82390b275/" target="_blank" class="social-link">
+            <div class="social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </div>
+            <span class="social-name">LinkedIn</span>
+            <span class="social-handle">Samantha Miller</span>
+            <span class="social-arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ── Resume ──────────────────────────────────── -->
+      <div class="resume-section">
+        <div class="section-label">Resume</div>
+        <a href="Files/samanthaMiller_resume.05.26.pdf" download class="resume-download">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4v-2h14v2H5z"/>
+          </svg>
+          Download Resume
+        </a>
+      </div>
+
+      <!-- ── Contact Form ────────────────────────────── -->
+      <div class="contact-form-section">
+        <div class="form-header">
+          <div class="section-label">Message me</div>
+          <h2>Send a Message</h2>
+        </div>
+
+        <!--
+          NOTE: This form is visual only. To make it send emails,
+          you can connect it to a service like Formspree, Netlify Forms,
+          or a backend script. Ask when you're ready for that step.
+        -->
+        <div class="contact-form">
+
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project, idea, or question..."></textarea>
+          </div>
+
+          <button type="button" class="form-submit">Send Message</button>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

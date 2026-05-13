@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <style>
+    /* ─── Projects Page ──────────────────────────────── */
+    .page-hero {
+      padding: 80px 64px 48px;
+      border-bottom: 1px solid rgba(26,26,29,.1);
+    }
+    .page-hero .eyebrow {
+      font-family: var(--font-body);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: bold;
+      line-height: 1;
+      letter-spacing: .02em;
+      color: var(--ink);
+    }
+
+    /* ─── Grid ───────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(26,26,29,.08);
+      padding: 2px;
+    }
+
+    /* ─── Card ───────────────────────────────────────── */
+    .project-card {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--muted);
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+
+    /* thumbnail image */
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    /* placeholder when no image yet */
+    .card-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--muted);
+      transition: transform .5s ease;
+    }
+    .card-placeholder-icon {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: .1em;
+      color: rgba(232,225,214,.15);
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    /* dark overlay */
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,26,29,.72);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity .35s ease;
+      padding: 24px;
+    }
+
+    .card-overlay .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: bold;
+      color: var(--cream);
+      letter-spacing: .04em;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .card-overlay .card-date {
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* gold accent line */
+    .card-overlay .card-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin: 4px 0;
+    }
+
+    /* hover states */
+    .project-card:hover .card-overlay {
+      opacity: 1;
+    }
+    .project-card:hover img,
+    .project-card:hover .card-placeholder {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────── -->
+  <header>
+    <div class="nav-brand">The Narrative Mill &mdash; <span>Narrative Designer</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ─── Page Hero ───────────────────────────────── -->
+  <div class="page-hero">
+    <div class="eyebrow">Portfolio</div>
+    <h1>Projects</h1>
+  </div>
+
+  <!-- ─── Projects Grid ───────────────────────────── -->
+  <main>
+    <div class="projects-grid">
+
+      <!--
+        HOW TO ADD A PROJECT CARD:
+        1. Copy one <a class="project-card"> block below
+        2. Set href to the project's page, e.g. href="project-title.html"
+        3. Replace <div class="card-placeholder"> with:
+           <img src="images/your-thumbnail.jpg" alt="Project Title" />
+        4. Update the title and date in .card-overlay
+      -->
+
+      <a href="#" class="project-card">
+        <div class="card-placeholder">
+          <div class="card-placeholder-icon">Image</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-title">Project Title</div>
+          <div class="card-rule"></div>
+          <div class="card-date">2024</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <div class="card-placeholder">
+          <div class="card-placeholder-icon">Image</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-title">Project Title</div>
+          <div class="card-rule"></div>
+          <div class="card-date">2024</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <div class="card-placeholder">
+          <div class="card-placeholder-icon">Image</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-title">Project Title</div>
+          <div class="card-rule"></div>
+          <div class="card-date">2024</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <div class="card-placeholder">
+          <div class="card-placeholder-icon">Image</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-title">Project Title</div>
+          <div class="card-rule"></div>
+          <div class="card-date">2023</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <div class="card-placeholder">
+          <div class="card-placeholder-icon">Image</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-title">Project Title</div>
+          <div class="card-rule"></div>
+          <div class="card-date">2023</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <div class="card-placeholder">
+          <div class="card-placeholder-icon">Image</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-title">Project Title</div>
+          <div class="card-rule"></div>
+          <div class="card-date">2023</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+</body>
+</html>
