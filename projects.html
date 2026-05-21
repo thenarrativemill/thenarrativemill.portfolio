@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects</title>
+  <title>Narrative Mill - Projects</title>
   <link rel="stylesheet" href="CSS/style.css" />
   <style>
     /* ─── Projects Page ──────────────────────────────── */
@@ -27,6 +27,44 @@
       line-height: 1;
       letter-spacing: .02em;
       color: var(--ink);
+    }
+
+    /* ─── Filter Bar ─────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 24px 64px;
+      border-bottom: 1px solid rgba(26,26,29,.1);
+      background: var(--cream);
+    }
+
+    .filter-btn {
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid transparent;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .filter-btn:hover {
+      color: var(--ink);
+      border-color: rgba(26,26,29,.15);
+    }
+    .filter-btn.active {
+      color: var(--ink);
+      border-color: var(--gold);
+      background: rgba(168,140,90,.06);
+    }
+
+    /* hide cards that don't match the filter */
+    .project-card.hidden {
+      display: none;
     }
 
     /* ─── Grid ───────────────────────────────────────── */
@@ -146,6 +184,13 @@
     <h1>Projects</h1>
   </div>
 
+  <!-- ─── Filter Bar ──────────────────────────────── -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="game">Game Projects</button>
+    <button class="filter-btn" data-filter="writing">Writing Samples</button>
+  </div>
+
   <!-- ─── Projects Grid ───────────────────────────── -->
   <main>
     <div class="projects-grid">
@@ -159,40 +204,40 @@
         4. Update the title and date in .card-overlay
       -->
 
-      <a href="#" class="project-card">
+      <a href="project-dough-or-die.html" class="project-card" data-category="game">
         <div class="card-placeholder">
           <div class="card-placeholder-icon">Image</div>
         </div>
         <div class="card-overlay">
-          <div class="card-title">Project Title</div>
+          <div class="card-title">Dough Or Die</div>
           <div class="card-rule"></div>
           <div class="card-date">2024</div>
         </div>
       </a>
 
-      <a href="#" class="project-card">
+      <a href="project-the-oracle.html" class="project-card" data-category="game">
         <div class="card-placeholder">
           <div class="card-placeholder-icon">Image</div>
         </div>
         <div class="card-overlay">
-          <div class="card-title">Project Title</div>
+          <div class="card-title">The Oracle</div>
           <div class="card-rule"></div>
           <div class="card-date">2024</div>
         </div>
       </a>
 
-      <a href="#" class="project-card">
+      <a href="project-eternal-purge.html" class="project-card" data-category="game">
         <div class="card-placeholder">
           <div class="card-placeholder-icon">Image</div>
         </div>
         <div class="card-overlay">
-          <div class="card-title">Project Title</div>
+          <div class="card-title">Eternal Purge</div>
           <div class="card-rule"></div>
           <div class="card-date">2024</div>
         </div>
       </a>
 
-      <a href="#" class="project-card">
+      <a href="#" class="project-card" data-category="game">
         <div class="card-placeholder">
           <div class="card-placeholder-icon">Image</div>
         </div>
@@ -203,7 +248,7 @@
         </div>
       </a>
 
-      <a href="#" class="project-card">
+      <a href="#" class="project-card" data-category="writing">
         <div class="card-placeholder">
           <div class="card-placeholder-icon">Image</div>
         </div>
@@ -214,7 +259,7 @@
         </div>
       </a>
 
-      <a href="#" class="project-card">
+      <a href="#" class="project-card" data-category="writing">
         <div class="card-placeholder">
           <div class="card-placeholder-icon">Image</div>
         </div>
@@ -227,6 +272,31 @@
 
     </div>
   </main>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+
+        // update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          const category = card.dataset.category;
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>

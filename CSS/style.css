@@ -1,35 +1,35 @@
 /* ─── Local Fonts ────────────────────────────────── */
 @font-face {
   font-family: 'Killam';
-  src: url('fonts/Killam-Bold.ttf') format('truetype');
+  src: url('../fonts/Killam-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tess';
-  src: url('fonts/Tess.otf') format('opentype');
+  src: url('../fonts/Tess.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tess';
-  src: url('fonts/Tess-Demi.otf') format('opentype');
+  src: url('../fonts/Tess-Demi.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tess';
-  src: url('fonts/Tess-Italic.otf') format('opentype');
+  src: url('../fonts/Tess-Italic.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Tess-Rounded';
-  src: url('fonts/Tess-Rounded.otf') format('opentype');
+  src: url('../fonts/Tess-Rounded.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

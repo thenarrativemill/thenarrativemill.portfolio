@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dough Or Die – The Narrative Mill</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <style>
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .project-hero {
+      position: relative;
+      width: 100%;
+      height: 620px;
+      overflow: hidden;
+      background: var(--muted);
+    }
+    .project-hero img,
+    .project-hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .project-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(26,26,29,.7) 100%);
+      pointer-events: none;
+    }
+    .hero-title-block {
+      position: absolute;
+      bottom: 52px;
+      left: 64px;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .hero-title-block h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: bold;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+
+    /* ─── Article Layout ─────────────────────────────── */
+    .project-article {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 64px 120px;
+      align-items: start;
+    }
+
+    /* ─── Main Content ───────────────────────────────── */
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: bold;
+      color: var(--ink);
+      letter-spacing: .02em;
+      line-height: 1.2;
+      margin: 48px 0 16px;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body p {
+      font-family: var(--font-body);
+      font-size: .95rem;
+      line-height: 1.95;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* inline article images */
+    .article-img {
+      width: 100%;
+      margin: 36px 0;
+      display: block;
+    }
+    .article-img img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .article-img figcaption {
+      font-family: var(--font-body);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: rgba(26,26,29,.4);
+      margin-top: 10px;
+    }
+
+    /* ─── Video Embed ────────────────────────────────── */
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      margin: 36px 0;
+      background: var(--ink);
+    }
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-label {
+      font-family: var(--font-body);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    /* ─── Sidebar ────────────────────────────────────── */
+    .article-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+
+    .sidebar-block {
+      border-top: 2px solid var(--gold);
+      padding-top: 20px;
+      margin-bottom: 40px;
+    }
+    .sidebar-block h3 {
+      font-family: var(--font-body);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .sidebar-block p,
+    .sidebar-block li {
+      font-family: var(--font-body);
+      font-size: .85rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .sidebar-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-block ul li {
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(26,26,29,.08);
+    }
+    .sidebar-block ul li:last-child {
+      border-bottom: none;
+    }
+    .sidebar-block .role-label {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* external links */
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sidebar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border: 1px solid rgba(26,26,29,.15);
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: border-color .2s, background .2s;
+    }
+    .sidebar-link:hover {
+      border-color: var(--gold);
+      background: rgba(168,140,90,.06);
+    }
+    .sidebar-link::after {
+      content: '→';
+      margin-left: auto;
+      color: var(--gold);
+    }
+
+    /* ─── Back link ──────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 28px 64px;
+      border-bottom: 1px solid rgba(26,26,29,.08);
+      display: flex;
+      transition: color .2s, gap .2s;
+    }
+    .back-link::before {
+      content: '←';
+      transition: transform .2s;
+    }
+    .back-link:hover {
+      color: var(--ink);
+      gap: 12px;
+    }
+    .back-link:hover::before {
+      transform: translateX(-4px);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────── -->
+  <header>
+    <div class="nav-brand">The Narrative Mill &mdash; <span>Narrative Designer</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ─── Back Link ───────────────────────────────── -->
+  <a href="projects.html" class="back-link">Back to Projects</a>
+
+  <!-- ─── Hero ────────────────────────────────────── -->
+  <div class="project-hero">
+    <!--
+      Option A — Static image hero:
+      <img src="images/project1Header.png" alt="Dough Or Die" />
+
+      Option B — Video hero (autoplays, muted, loops):
+      <video autoplay muted loop playsinline>
+        <source src="videos/dough-or-die-hero.mp4" type="video/mp4" />
+      </video>
+    -->
+    <img src="images/project1Header.png" alt="Dough Or Die" />
+    <div class="hero-title-block">
+      <div class="hero-eyebrow">Game Project &nbsp;·&nbsp; 2024</div>
+      <h1>Dough Or Die</h1>
+    </div>
+  </div>
+
+  <!-- ─── Article ──────────────────────────────────── -->
+  <div class="project-article">
+
+    <!-- Main content -->
+    <div class="article-body">
+
+      <h2>Overview</h2>
+      <p>
+        Write a compelling overview of Dough Or Die here. What kind of game is it?
+        What's the premise? What experience were you trying to create for the player?
+        Keep it engaging and in your voice.
+      </p>
+      <p>
+        A follow-up paragraph expanding on the premise, setting, or tone of the game.
+        What makes it unique? What problems does it solve or what feelings does it evoke?
+      </p>
+
+      <!-- Trailer embed — replace VIDEO_ID with your YouTube video ID -->
+      <div class="video-label">Trailer</div>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Dough Or Die Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <h2>My Role</h2>
+      <p>
+        Describe your specific contributions to this project. What did you write,
+        design, or build? Were you the sole creator or part of a team? Be specific —
+        this is what hiring collaborators care about most.
+      </p>
+
+      <!-- Inline image — replace with your own -->
+      <figure class="article-img">
+        <img src="images/dough-or-die-screenshot1.jpg" alt="Gameplay screenshot" />
+        <figcaption>Caption describing the image or screenshot above.</figcaption>
+      </figure>
+
+      <h2>The Process</h2>
+      <p>
+        Walk through how the project came together. What were the early ideas?
+        What challenges did you run into and how did you solve them?
+        What did you learn along the way?
+      </p>
+      <p>
+        A second paragraph here to continue the process narrative — pivots,
+        playtesting discoveries, writing challenges, or design decisions worth
+        highlighting.
+      </p>
+
+      <!-- Second inline image -->
+      <figure class="article-img">
+        <img src="images/dough-or-die-screenshot2.jpg" alt="Another screenshot" />
+        <figcaption>Caption describing the image or screenshot above.</figcaption>
+      </figure>
+
+      <h2>Reflection</h2>
+      <p>
+        What are you most proud of with this project? What would you do differently?
+        How did it shape you as a narrative designer? A honest reflection goes a long
+        way with readers.
+      </p>
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+
+      <div class="sidebar-block">
+        <h3>Project Info</h3>
+        <ul>
+          <li><span class="role-label">Year</span>2024</li>
+          <li><span class="role-label">Type</span>Game Project</li>
+          <li><span class="role-label">Engine</span>Unity / Unreal / etc.</li>
+          <li><span class="role-label">Genre</span>Add genre here</li>
+          <li><span class="role-label">Duration</span>X months</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>My Role</h3>
+        <ul>
+          <li>Narrative Designer</li>
+          <li>Writer</li>
+          <li>Add roles here</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>Team</h3>
+        <ul>
+          <li><span class="role-label">Team Member</span>Role</li>
+          <li><span class="role-label">Team Member</span>Role</li>
+          <li><span class="role-label">Team Member</span>Role</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>Links</h3>
+        <div class="sidebar-links">
+          <!-- Add or remove links as needed -->
+          <a href="#" class="sidebar-link">Play on Itch.io</a>
+          <a href="#" class="sidebar-link">View on Steam</a>
+          <a href="#" class="sidebar-link">GitHub Repo</a>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+</body>
+</html>
