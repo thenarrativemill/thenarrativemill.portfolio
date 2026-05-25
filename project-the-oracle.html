@@ -216,6 +216,41 @@
       color: var(--gold);
     }
 
+    /* ─── Case Study ─────────────────────────────────── */
+    .case-study {
+      margin: 48px 0;
+      padding: 40px 48px;
+      background: rgba(26,26,29,.03);
+      border-left: 3px solid var(--gold);
+    }
+    .case-study-label {
+      font-family: var(--font-body);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .case-study h2 {
+      margin-top: 0 !important;
+      margin-bottom: 28px !important;
+    }
+    .case-study h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-weight: bold;
+      color: var(--ink);
+      letter-spacing: .02em;
+      margin: 32px 0 10px;
+    }
+    .case-study h3:first-of-type {
+      margin-top: 0;
+    }
+    .case-study p {
+      font-size: .92rem !important;
+    }
+
     /* ─── Back link ──────────────────────────────────── */
     .back-link {
       display: inline-flex;
@@ -288,20 +323,17 @@
 
       <h2>Overview</h2>
       <p>
-        Write a compelling overview of The Oracle here. What kind of game is it?
-        What's the premise? What experience were you trying to create for the player?
-        Keep it engaging and in your voice.
+        The Oracle is an evolving rules visual novel where you play as an oracle, but with every truthful prophecy you tell, you gain a restriction on your speech. As you tell more truths it will become more and more difficult to tell the truth, but you can avoid that by lying about the prophecies instead.
       </p>
       <p>
-        A follow-up paragraph expanding on the premise, setting, or tone of the game.
-        What makes it unique? What problems does it solve or what feelings does it evoke?
+        I wanted this to play on peoples' emotions and morality so I had to be sure to create convincing characters and interconnecting storylines. I also have these consequences affecting the player character's own wellbeing, so the player is balancing both themselves and others.
       </p>
 
       <!-- Trailer embed — replace VIDEO_ID with your YouTube video ID -->
       <div class="video-label">Trailer</div>
       <div class="video-embed">
         <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID"
+          src="https://www.youtube.com/embed/4fg2p6ExNQ4"
           title="The Oracle Trailer"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
@@ -310,40 +342,144 @@
 
       <h2>My Role</h2>
       <p>
-        Describe your specific contributions to this project. What did you write,
-        design, or build? Were you the sole creator or part of a team? Be specific —
-        this is what hiring collaborators care about most.
+        This was a solo project I had worked on during my first senior studio class at Savannah College of Art and Design (SCAD). The original goal of this was to actually work on my systems design alone, but as I got further into the project I realized I wanted to focus on narrative design. But I was too late into the project to change my scope, so the narrative design of this has been moved to a side personal project.
+      </p>
+		<p>
+        For this project, I had created the dialogue system that handled the customer's question, their portrait, the player's answers, and the customer's reactions. I also included reactionary answers where you would see specific encounters later on based on answers you may have told to previous customers. I also had created the rules system that made sure the answers were following the rules the player gained, whether that meant changing how the answers looked or removing answers entirely from being an option.
       </p>
 
       <!-- Inline image — replace with your own -->
-      <figure class="article-img">
-        <img src="images/the-oracle-screenshot1.jpg" alt="Gameplay screenshot" />
-        <figcaption>Caption describing the image or screenshot above.</figcaption>
-      </figure>
+        <img src="images/crazyAnswers.JPG" alt="Gameplay screenshot" />
 
-      <h2>The Process</h2>
+      <!-- <h2>The Process</h2>
       <p>
-        Walk through how the project came together. What were the early ideas?
-        What challenges did you run into and how did you solve them?
-        What did you learn along the way?
+        To start the project, I had created the base storyline and the customer interactions. 
       </p>
       <p>
         A second paragraph here to continue the process narrative — pivots,
         playtesting discoveries, writing challenges, or design decisions worth
         highlighting.
-      </p>
+      </p>-->
+		  
+      <!-- ─── Case Study ─────────────────────────────── -->
+      <div class="case-study">
+        <div class="case-study-label">Case Study</div>
+        <h2>Development Breakdown</h2>
 
-      <!-- Second inline image -->
-      <figure class="article-img">
-        <img src="images/the-oracle-screenshot2.jpg" alt="Another screenshot" />
-        <figcaption>Caption describing the image or screenshot above.</figcaption>
-      </figure>
+        <h3>Concept</h3>
+        <p>
+          The Oracle is an evolving rules visual novel where you have been chosen by the gods
+          to bear the Gift of Prophecy. Everyone around the world comes to you seeking advice
+          on their futures, but with every truthful prophecy you reveal, your speech becomes
+          more restricted. You must decide what is worth losing your speech over and what can
+          be fabricated at the cost of your conscience.
+        </p>
+
+        <h3>Basic Narrative Outlined</h3>
+        <p>
+          I began with laying out a basic linear narrative progression with 5 encounters for the
+          player in order to test the tone of the overall story and the dialogue system in the
+          prototype. When writing out these characters and their encounters with the player, I
+          wanted to make sure that their situations were not only diverse between them but also
+          played at the player's moral compass — a little girl who believes her cat is magical and
+          immortal, and a woman who is very sick asking what to do about her little boy.
+        </p>
+		  
+		  <img src="images/oracle_twine.png" alt="twine layout" />
+
+        <h3>Prototype</h3>
+        <p>
+          I started by making a prototype in Processing to get an understanding of the overall
+          system and the flow between encounters, then transferred to Unreal Engine 5. The
+          system is composed entirely of Widget Blueprints, using Data Tables to easily modify
+          dialogue strings and store values — such as whether a specific encounter would trigger a
+          reactionary scene later on.
+        </p>
+		  
+		  <img src="images/oracle_dialogueDT.JPG" alt="twine layout" />
+		  <br>
+		  
+        <p>
+          I set up a data table for the encounters, with a row for each one holding the question
+          and the four possible responses. A separate data table stores the characters' reactions
+          — one for each answer the player can give. From there, encounters play out with the
+          question and responses displayed, and clicking a response triggers the correct
+          character reaction before moving to the next encounter.
+        </p>
+
+        <!-- Inline image slot -->
+          
+
+        <h3>Adding Detail to the Narrative</h3>
+        <p>
+          Once the initial dialogue system was set up, I added finer narrative detail throughout.
+          I chose specific encounters that could have a reactionary scene depending on the
+          player's answer. For example — the little girl who believes her cat is magical: if you go
+          along with her and tell her he is truly magical, an angry mother comes by later yelling
+          at you for filling her daughter's head with false hope. Small scenes like this deepen
+          the moral weight of each decision and affect how the player approaches future
+          encounters.
+        </p>
+		  
+		  <img src="images/oracle_reactionsDT.JPG" alt="Data tables and text document original setup" />
+		  <br>
+		  
+        <p>
+          I originally had reaction scenes set up to play two encounters later, but I'd like to
+          adjust this to a random number between 2 and 4 to give some unpredictability to the
+          player's experience.
+        </p>
+
+        <h3>Rules System</h3>
+        <p>
+          The last major step was designing and implementing the rules system. Not only did
+          this mean designing all the rules themselves, but also checking and applying them
+          after the player has earned them. Some rules change the player's available responses,
+          some completely rule out certain responses, and some change the visual appearance
+          of the game — building tension the further the player progresses.
+        </p>
+		  
+		  <img src="images/oracle_rules.JPG" alt="rules blueprint" />
+		  <br>
+		  
+        <p>
+          Rules are ranged in difficulty, and the options for gaining a new rule scaled with the
+          player's progression. Rules were randomly selected from a difficulty-tiered Data Table,
+          then removed once assigned to avoid repeats. Each new encounter then processes
+          the player's full rule set in the order they were received — so if the player first got
+          "Your responses are scrambled" and later "You can no longer use the word 'you'",
+          the answers would be scrambled first, then each scrambled response would be
+          checked for the word "you" and visually crossed out if found.
+        </p>
+        <p>
+          I'd like to redesign the rule scaling to account not only for story progression but also
+          for how many rules the player currently has accumulated.
+        </p>
+
+        <h3>Gameplay Loop</h3>
+        <p>
+          The player receives their first encounter and is presented with a question. One of the
+          available responses is labeled as the truth of the customer's future. If the player
+          chooses the truth, they gain a rule. If they don't, they move to the next encounter
+          without a new rule. If their answer triggered a reaction, that scene plays out shortly
+          after. If not, the next encounter begins immediately.
+        </p>
+
+        <h3>Player Feedback / UX / UI</h3>
+        <p>
+          To support the player experience, I added a few key feedback elements. First, a visual
+          indicator marks which response is the truth versus the alternatives — making the
+          decision feel deliberate and morally weighted rather than arbitrary. Second, a
+          toggleable rules popup was added after playtesting revealed that players were getting
+          lost once they had accumulated more than 3–5 rules. This gave players a clearer
+          understanding of their current constraints and encouraged more strategic thinking
+          about whether each new rule was worth gaining.
+        </p>
+      </div>
 
       <h2>Reflection</h2>
       <p>
-        What are you most proud of with this project? What would you do differently?
-        How did it shape you as a narrative designer? A honest reflection goes a long
-        way with readers.
+        While I'm very proud of getting the game's functionality working, I would like to both reamp the narrative design to do a true branching narrative structure and redo the systems to be more optimized and cleaner. I'm already planning out the branching narrative structure with different routes based on the player's gameplay/choices, and then different endings for each route as well. For this game to be successful, the immersion has to be done very well or the goal of the game won't come across.
       </p>
 
     </div>
@@ -354,41 +490,31 @@
       <div class="sidebar-block">
         <h3>Project Info</h3>
         <ul>
-          <li><span class="role-label">Year</span>2024</li>
+          <li><span class="role-label">Year</span>2025</li>
           <li><span class="role-label">Type</span>Game Project</li>
-          <li><span class="role-label">Engine</span>Unity / Unreal / etc.</li>
-          <li><span class="role-label">Genre</span>Add genre here</li>
-          <li><span class="role-label">Duration</span>X months</li>
+          <li><span class="role-label">Engine</span>Unreal Engine</li>
+          <li><span class="role-label">Genre</span>Evolving Rules, Visual Novel</li>
+          <li><span class="role-label">Duration</span>Jan - Mar 2025</li>
         </ul>
       </div>
 
       <div class="sidebar-block">
         <h3>My Role</h3>
         <ul>
+		  <li>Project Owner</li>
+          <li>Systems Designer</li>
           <li>Narrative Designer</li>
-          <li>Writer</li>
-          <li>Add roles here</li>
         </ul>
       </div>
 
-      <div class="sidebar-block">
-        <h3>Team</h3>
-        <ul>
-          <li><span class="role-label">Team Member</span>Role</li>
-          <li><span class="role-label">Team Member</span>Role</li>
-          <li><span class="role-label">Team Member</span>Role</li>
-        </ul>
-      </div>
-
-      <div class="sidebar-block">
+      <!--<div class="sidebar-block">
         <h3>Links</h3>
         <div class="sidebar-links">
-          <!-- Add or remove links as needed -->
           <a href="#" class="sidebar-link">Play on Itch.io</a>
           <a href="#" class="sidebar-link">View on Steam</a>
-          <a href="#" class="sidebar-link">GitHub Repo</a>
+          <a href="#" class="sidebar-link">Website</a>
         </div>
-      </div>
+      </div>-->
 
     </aside>
 
